@@ -389,7 +389,7 @@ export async function linearWebhookHandler(
 
             const { error: applyLabelError } = await applyLabel({
                 repoFullName,
-                issueNumber: BigInt(createdIssueData.number),
+                issueNumber: Number(createdIssueData.number),
                 labelNames,
                 githubAuthHeader,
                 userAgentHeader
@@ -433,7 +433,7 @@ export async function linearWebhookHandler(
 
                 const { error: commentError } = await createComment({
                     repoFullName,
-                    issueNumber: BigInt(createdIssueData.number),
+                    issueNumber: Number(createdIssueData.number),
                     body: `${modifiedComment || ""}${footer}`,
                     githubAuthHeader,
                     userAgentHeader
@@ -1130,7 +1130,7 @@ export async function linearWebhookHandler(
 
             const { error: applyLabelError } = await applyLabel({
                 repoFullName,
-                issueNumber: BigInt(createdIssueData.number),
+                issueNumber: Number(createdIssueData.number),
                 labelNames,
                 githubAuthHeader,
                 userAgentHeader

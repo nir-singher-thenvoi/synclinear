@@ -11,16 +11,19 @@ generator client {
 model SyncedIssue {
     id String @id @default(cuid())
 
-    githubIssueNumber BigInt
+    //githubIssueNumber BigInt
+    githubIssueNumber Int
     linearIssueNumber Int
 
-    githubIssueId BigInt
+    //githubIssueId BigInt
+    githubIssueId Int
     linearIssueId String
 
     linearTeamId String
     LinearTeam   LinearTeam @relation(fields: [linearTeamId], references: [teamId])
 
-    githubRepoId BigInt
+    //githubRepoId BigInt
+    githubRepoId Int
     GitHubRepo   GitHubRepo @relation(fields: [githubRepoId], references: [repoId])
 
     @@map("synced_issues")
@@ -49,7 +52,8 @@ model LinearTeam {
 model GitHubRepo {
     id String @id @default(cuid())
 
-    repoId   BigInt @unique
+    //repoId   BigInt @unique
+    repoId   Int @unique
     repoName String
 
     webhookSecret String
@@ -65,11 +69,13 @@ model GitHubRepo {
 model Sync {
     id String @id @default(cuid())
 
-    githubUserId BigInt
+    //githubUserId BigInt
+    githubUserId Int
     linearUserId String
 
     GitHubRepo     GitHubRepo @relation(fields: [githubRepoId], references: [repoId])
-    githubRepoId   BigInt
+    //githubRepoId   BigInt
+    githubRepoId   Int
     githubApiKey   String
     githubApiKeyIV String
 
@@ -85,7 +91,8 @@ model Sync {
 model User {
     id String @id @default(cuid())
 
-    githubUserId   BigInt
+    //githubUserId   BigInt
+    githubUserId   Int
     githubUsername String
     githubEmail    String?
 
@@ -104,7 +111,8 @@ model Milestone {
     cycleId     String
 
     GitHubRepo   GitHubRepo @relation(fields: [githubRepoId], references: [repoId])
-    githubRepoId BigInt
+    //githubRepoId BigInt
+    githubRepoId Int
 
     LinearTeam   LinearTeam @relation(fields: [linearTeamId], references: [teamId])
     linearTeamId String
